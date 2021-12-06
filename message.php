@@ -33,6 +33,20 @@ class message {
     return $errors;    
     }
 
+    public function toHTML(): string
+    {
+        $login = htmlentities($this->login);
+        $date = $this->date->format('d/m/Y à H:i');
+        $message = htmlentities($this->message);
+        return <<<HTML
+
+    <p>
+    <strong>{$login}</strong> <em>le {$date}</em><br>
+    {$message}
+    </p>
+    HTML;
+    }
+
     public function toJSON(): string
     {
        return  json_encode([

@@ -19,6 +19,20 @@ class GuestBook {
     public function addMessage(Message $message): void
     {
 
-        file_put_contents($this->file, $message->toJSON() . "\n", FILE_APPEND);
+        file_put_contents($this->file, $message->toJSON() . PHP_EOL, FILE_APPEND);
+    }
+
+    public function getMessages(): array
+    {
+        $content = trim(file_get_contents($this->file));
+        $lines = explode(PHP_EOL, $content);
+        $messages = [];
+        foreach ($lines as $line){
+
+            $data = json_decode($line, true);
+            $messages[] = new Message($data['login'], $data['message'], new DateTime("@" . $data['date']));
+
+        }
+        return $messages;
     }
 } 

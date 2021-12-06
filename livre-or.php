@@ -3,11 +3,12 @@ require_once 'message.php';
 require_once 'GuestBook.php';
 $errors = null;  
 $success = false;
+$guestbook = new GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'messages');
 if(isset($_POST['login'], $_POST['message'])){
     $message = new message($_POST['login'], $_POST['message']);
     if($message->isValid()) {
 
-        $guestbook = new GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'messages');
+        
         $guestbook->addMessage($message);
         $success = true;
         $_POST = [];
@@ -17,6 +18,8 @@ if(isset($_POST['login'], $_POST['message'])){
     }
 
 }
+
+$messages = $guestbook->getMessages();
 
 ?>
 
@@ -56,13 +59,23 @@ if(isset($_POST['login'], $_POST['message'])){
     <?php endif ?>
 </div>
     <div class="form-group">
-    <textarea  name="message" placeholder="Votre message" <?= isset($errors['message']) ? 'is-invalid' : '' ?>><?= $_POST['message'] ?? '' ?>"</textarea>
+    <textarea  name="message" placeholder="Votre message" <?= isset($errors['message']) ? 'is-invalid' : '' ?>><?= $_POST['message'] ?? '' ?></textarea>
     <?php if (isset($errors['message'])): ?>
         <div class="invalid-feedback"><?= $errors['message'] ?></div>
     <?php endif ?>
 </div>
     <button class="btn btn-primary">Envoyer</button>
 </form>
+<?php if (!empty($messages)): ?>
+<h1 class="mt-4">Vos Messages</h1>
+
+<?php foreach($messages as $message): ?>
+
+<?= $message->toHTML() ?>
+
+<?php endforeach ?>
+
+<?php endif ?>
 </div>    
 </body>
 </html>
