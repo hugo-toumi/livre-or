@@ -39,7 +39,7 @@ if(isset($_GET ['id']) AND $_GET ['id'] > 0)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="book.css">
     <title>Page Profil</title>
 </head>
 <body>
@@ -62,7 +62,8 @@ if(isset($_GET ['id']) AND $_GET ['id'] > 0)
 
 ?>
 
-<a href="deconnexion.php">Déconnexion</a>
+<a href="deconnexion.php">Déconnexion</a><br>
+<a href="livre-or.php">Livre d'or</a>
 
 <?php
 }

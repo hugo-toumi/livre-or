@@ -60,7 +60,7 @@ if(!empty($_POST['login']) && !empty($_POST['password'])){
 <head>
 	<meta charset="utf-8">
 	<title>Connexion</title>
-	<link rel="stylesheet" type="text/css" href="book.css">
+	<link rel="stylesheet"  href="book.css">
 </head>
 <body>
 	<header>
