@@ -67,6 +67,13 @@ if(!empty($_POST['login']) && !empty($_POST['password'])){
 		<h1>Connexion</h1>
 	</header>
 
+	<nav class="crumbs">
+    <ol>
+        
+        <li class="crumb"><a href="index.php">Acceuil</a></li>
+    </ol>
+</nav>
+
 	<div class="container">
 		<p id="info">Bienvenue sur mon site si vous n'êtes pas inscrit, <a href="inscription.php">inscrivez-vous.</a></p>
 	 	

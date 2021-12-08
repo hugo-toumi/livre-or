@@ -46,6 +46,13 @@ if(isset($_GET ['id']) AND $_GET ['id'] > 0)
 <header>
 <h1>Page de Profil</h1>
 </header>
+<nav class="crumbs">
+    <ol>
+        
+        <li class="crumb"><a href="index.php">Acceuil</a></li>
+        
+    </ol>
+</nav>
 <div align="center">
 <h2>Profil de <?php echo $userinfo['login']; ?></h2>
 <br /><br />

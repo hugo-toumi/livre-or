@@ -44,12 +44,19 @@ if(!empty($_POST['password'])&& !empty($_POST['password_confirm'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="book.css">
-    <title>Module de Connexion</title>
+    <title>Inscription</title>
 </head>
 <body>
     <header>
       <h1>Inscription</h1>
     </header>
+
+    <nav class="crumbs">
+    <ol>
+        
+        <li class="crumb"><a href="index.php">Acceuil</a></li>
+    </ol>
+</nav>
 
     <div class="container">
 

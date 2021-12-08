@@ -43,6 +43,8 @@ $messages = $guestbook->getMessages();
 		<h1>Livre d'or</h1>
 	</header>
 
+    <li class="crumb"><a href="index.php">Acceuil</a></li>
+
 <div class="container">
 <h1>Commentaire</h1>
 
