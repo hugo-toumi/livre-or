@@ -29,10 +29,9 @@ class GuestBook {
         $messages = [];
         foreach ($lines as $line){
 
-            $data = json_decode($line, true);
-            $messages[] = new Message($data['login'], $data['message'], new DateTime("@" . $data['date']));
+            $messages[] = Message::fromJSON($line);
 
         }
-        return $messages;
+        return array_reverse($messages);
     }
 } 

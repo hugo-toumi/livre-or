@@ -8,6 +8,12 @@ class message {
     private $message;
     private $date;
 
+    public static function fromJSON(string $json): Message
+    {
+        $data = json_decode($json, true);
+            return new self($data['login'], $data['message'], new DateTime("@" . $data['date']));
+    }
+
     public function __construct(string $login, string $message, ?DateTime $date = null){
 
         $this->login = $login;
@@ -36,8 +42,9 @@ class message {
     public function toHTML(): string
     {
         $login = htmlentities($this->login);
+        $this->date->setTimezone(new DateTimeZone('Europe/Paris'));
         $date = $this->date->format('d/m/Y à H:i');
-        $message = htmlentities($this->message);
+        $message = nl2br(htmlentities($this->message));
         return <<<HTML
 
     <p>
