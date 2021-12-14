@@ -14,7 +14,8 @@
 
 <div class="container">
 
-    <p id="info">Bienvenue sur mon site pour en voir plus,<a href="inscription.php">Inscrivez-vous</a> Ou alors  <a href="connexion.php">Connectez-vous</a> /<a href="deconnexion.php"> Déconnexion.<br></a> Vous pouvez aussi afficher notre <a href="livre-or.php">Livre d'or</p>
+    <p id="info">Bienvenue sur mon site pour en voir plus,<a href="inscription.php">Inscrivez-vous</a> Ou alors  <a href="connexion.php">Connectez-vous</a> /<a href="deconnexion.php"> Déconnexion.<br></a> Vous pouvez aussi afficher notre <a href="livre-or.php">Livre d'or / </a> <a href="https://github.com/hugo-toumi/livre-or" target="_blank">Mon GitHub</a></p>
+    
   
 
 </body>
