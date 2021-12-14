@@ -1,3 +1,4 @@
 <?php
-$db = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root','');
+$bdd = mysqli_connect('localhost', 'root', '', 'livreor');
+mysqli_set_charset($bdd, 'utf8');
 ?>

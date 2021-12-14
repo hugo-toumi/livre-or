@@ -1,83 +1,66 @@
 <?php
+
+session_start();
+
+
 require('connection.php');
-require_once 'message.php';
-require_once 'GuestBook.php';
-$errors = null;  
-$success = false;
-$guestbook = new GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'messages');
-if(isset($_POST['login'], $_POST['message'])){
-    $message = new message($_POST['login'], $_POST['message']);
-    if($message->isValid()) {
+$error = '';
 
-        
-        $guestbook->addMessage($message);
-        $success = true;
-        $_POST = [];
-
+if (isset($_POST['submit'])) {
+    if (!empty($_POST['comment'])) {
+        $comment = $_POST['comment'];
+        $id = $_SESSION['user']['id'];
+        $requete = mysqli_query($bdd, "INSERT INTO commentaires(commentaire, id_utilisateur, date) VALUES ('$comment', '$id', NOW())");
+        header('Location: livre-or.php');
+        var_dump($requete);
     } else {
-        $errors = $message->getErrors();
+        $error = 'veuillez remplir le champs';
     }
-
 }
-
-$messages = $guestbook->getMessages();
-
 
 ?>
 
-
-
-
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="book.css">
-    <title>Livre d'or</title>
-</head>
-<body>
+<html>
 
-<header>
-		<h1>Livre d'or</h1>
-	</header>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="book.css">
+
+    <title>Commentaire</title>
+</head>
+
+<body>
+    <header>
+        <h1>Commentaire</h1>
+    </header>
 
     <nav class="crumbs">
     <ol>
         
         <li class="crumb"><a href="index.php">Acceuil</a></li>
+        <li class="crumb"><a href="connexion.php">Connexion</a></li>
     </ol>
 </nav>
 
-<div class="container">
+        
 
+        <div class="container">
+        
+            <p id="postcom">Mettre un Commentaire</p>
+            <form action="" method="post">
 
-<?php if (!empty($errors)): ?>
-<div class="alert alert-danger">
-    Formulaire invalide
-</div>
-    <?php endif ?>
-
-
-    <?php if ($success): ?>
-<div class="alert alert-success">
-    Merci de votre message !
-</div>
-    <?php endif ?>
-    
-
-    
-<?php if (!empty($messages)): ?>
-<h1 class="mt-4">Livre d'or</h1>
-
-<?php foreach($messages as $message): ?>
-
-<?= $message->toHTML() ?>
-
-<?php endforeach ?>
-
-<?php endif ?>
-</div>    
+                <div class="bloc-com">
+                    
+                    <textarea id="message" name="comment" placeholder="Ecrivez ici..." required></textarea>
+                </div>
+                <div class="poster">
+                    <button type="submit" name="submit" id="comm">Poster</button>
+                </div>
+            </form>
+        </div>
 </body>
+
 </html>

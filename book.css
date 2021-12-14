@@ -53,11 +53,14 @@ header h1{
 
 #form{
    text-align: center;
+   margin-top: 100px;
+
 }
 
 form{
     text-align: left;
     display: inline-block;
+    
 }
 
 #info{
@@ -82,22 +85,7 @@ button{
     width: 1000px;
     margin: 0 auto;
     padding: 15px;
-}
 
-#error{
-    background-color: red;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    border-radius: 5px;   
-}
-
-#success{
-    background-color: green;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    border-radius: 5px;
 }
 
 #profil{
